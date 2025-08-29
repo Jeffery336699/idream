@@ -2,10 +2,10 @@ main() {
   int count = 49; // 整型
   double pi = 3.14; // 浮点型
 
-  // foo0();
+  foo0();
   // foo1();
   // foo2();
-  foo3();
+  // foo3();
 }
 
 
@@ -13,7 +13,7 @@ main() {
 foo0(){
   num a = 57;
   num b = 3.28;
-  print("a:${a.runtimeType}===b:${b.runtimeType}");
+  print("a:${a.runtimeType}===b:${b.runtimeType}"); // a:int===b:double
 }
 
 foo1() {

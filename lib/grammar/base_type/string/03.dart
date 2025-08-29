@@ -1,9 +1,13 @@
 main() {
-  // foo1();
+  foo1();
+  foo2();
+  foo3();
+  foo4();
   foo5();
 }
 
 foo1() {
+  print('----- foo1 -----');
   String name = 'toly1994';
   print(name[4]);//1
   print(name[name.length-1]); // 4
@@ -11,6 +15,7 @@ foo1() {
 }
 
 foo2() {
+  print('----- foo2 -----');
   String name = '  toly 1994 ';
   print(name.trim());//toly空1994
   print(name.trimLeft()); //toly空1994空
@@ -18,12 +23,14 @@ foo2() {
 }
 
 foo3() {
+  print('----- foo3 -----');
   String name = 'tolY1994 ';
   print(name.toUpperCase());//TOLY1994
   print(name.toLowerCase()); //toly1994
 }
 
 foo4() {
+  print('----- foo4 -----');
   String name = 'toly1994';
   print(name.startsWith('T'));
   print(name.endsWith('4'));
@@ -31,6 +38,7 @@ foo4() {
 }
 
 foo5() {
+  print('----- foo5 -----');
   String name = 'toly 1994';
   print(name.replaceAll(' ','_')); //toly_1994
   print(name.split(' ')); //[toly, 1994]

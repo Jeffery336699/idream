@@ -1,9 +1,10 @@
 void main() {
-
+  foo();
+  foo1();
 }
 void foo(){
   try {
-    getMean("card");
+    print(getMean("card"));
   } catch (e,s) {
     print("${e.runtimeType}: ${e.toString()}");
     print("${s.runtimeType}: ${s.toString()}");
@@ -11,11 +12,12 @@ void foo(){
 }
 void foo1(){
   try {
-    getMean("card");
+    getMean("card2");
   } on NoElementInDictException catch(e,s){
     // 特定种类的异常处理
-    print("${e.runtimeType}: ${e.toString()}");
-    print("${s.runtimeType}: ${s.toString()}");
+    print("1111 ${e.runtimeType}: ${e.toString()}");
+    // 打印出栈信息，在控制台能直接定位到代码行
+    print("2222 ${s.runtimeType}: ${s.toString()}");
   } catch (e,s) {
     // 其余异常处理
   } finally{

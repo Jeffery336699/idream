@@ -22,6 +22,7 @@ void doTask1() {
 
 
 void doTask2(){
+  print('Directory.current.path: ${Directory.current.path}');
   File file = File(path.join(Directory.current.path,"l10n.yaml"));
   print('开始读取====l10n.yaml===');
   file.readAsString().then((value){
