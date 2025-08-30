@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
   Widget buildStopwatchPanel() {
     double radius = MediaQuery.of(context).size.shortestSide / 2 * 0.75;
     return BlocBuilder<StopWatchBloc, StopWatchState>(
+      ///上面的秒表UI仅与duration相关
       buildWhen: (p, n) => p.duration != n.duration,
       builder: (_, state) => StopwatchWidget(
         duration: state.duration,
