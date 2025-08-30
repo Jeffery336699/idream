@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   late Ticker _ticker;
   Duration _duration = Duration.zero;
   Duration _secondDuration = Duration.zero;
-  List<TimeRecord> _record = [];
+  final List<TimeRecord> _record = [];
 
   @override
   void initState() {

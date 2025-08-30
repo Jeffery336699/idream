@@ -26,15 +26,18 @@ class StopwatchApp extends StatelessWidget {
         statusBarIconBrightness: Brightness.dark);
 
     return BlocBuilder<AppConfigBloc, AppConfig>(
-      builder: (_, state) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-            primaryColor: state.themeColor,
-            appBarTheme: AppBarTheme(
-              systemOverlayStyle: overlayStyle,
-            )),
-        home: const HomePage(),
-      ),
+      builder: (_, state){
+        print('外层 build：${state.themeColor}');
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+              primaryColor: state.themeColor,
+              appBarTheme: AppBarTheme(
+                systemOverlayStyle: overlayStyle,
+              )),
+          home: const HomePage(),
+        );
+      },
     );
   }
 }

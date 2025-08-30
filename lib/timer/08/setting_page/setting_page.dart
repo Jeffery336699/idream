@@ -69,5 +69,6 @@ class SettingPage extends StatelessWidget {
       ),
       constraints: const BoxConstraints(minHeight: 480, minWidth: 320, maxWidth: 320),
     );
+    print('newColor: $newColor');
   }
 }

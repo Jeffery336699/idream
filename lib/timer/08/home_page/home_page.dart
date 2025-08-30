@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   late Ticker _ticker;
   Duration _duration = Duration.zero;
   Duration _secondDuration = Duration.zero;
-  List<TimeRecord> _record = [];
+  final List<TimeRecord> _record = [];
 
   @override
   void initState() {
@@ -159,7 +159,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-//
+//构建出从右往左的路由动画
 class Right2LeftRouter<T> extends PageRouteBuilder<T> {
   final Widget child;
   final int durationMs;

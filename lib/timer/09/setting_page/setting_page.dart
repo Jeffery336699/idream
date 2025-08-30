@@ -8,6 +8,7 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // print('SettingPage build');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -36,6 +37,7 @@ class SettingPage extends StatelessWidget {
         height: 24,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
+          //因为拿颜色的时候就是从主题里拿的，top的一改全部就改变了
           color: Theme.of(context).primaryColor,
         ),
       ),

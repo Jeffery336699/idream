@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   late Ticker _ticker;
   Duration _duration = Duration.zero;
   Duration _secondDuration = Duration.zero;
-  List<TimeRecord> _record = [];
+  final List<TimeRecord> _record = [];
 
   @override
   void initState() {
@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
       dt = elapsed - lastDuration;
       _duration += dt;
       if(_record.isNotEmpty){
+        //也刷新最近一次的持续时间
         _secondDuration = _duration - _record.last.record;
       }
       lastDuration = elapsed;
