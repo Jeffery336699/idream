@@ -2,6 +2,7 @@ void main() {
   int a = 10;
   a %= 20;
   print(a);
+  foo0();
 }
 
 void foo0() {

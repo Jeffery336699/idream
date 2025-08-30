@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:idream/ext/ex_widget.dart';
 
 class StopwatchWidget extends StatelessWidget {
   final double radius;
@@ -37,7 +38,7 @@ class StopwatchWidget extends StatelessWidget {
           scaleColor: scaleColor,
           textStyle: style),
       size: Size(radius * 2, radius * 2),
-    );
+    ).withBorder();
   }
 }
 
@@ -73,26 +74,39 @@ class StopwatchPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    // `canvas.translate(size.width / 2, size.height / 2);` 这行代码的作用是**移动画布的坐标原点**。
+
+    // 在执行这行代码之前，画布的坐标原点 `(0, 0)` 位于 `CustomPaint` 组件的左上角。
+    //
+    // 执行这行代码之后，新的坐标原点 `(0, 0)` 被移动到了**画布的中心点**。
+    //
+    // **为什么这么做？**
+    //
+    // 这样做是为了简化后续的绘制计算。对于像秒表这样中心对称的图形，将坐标原点设置在中心，
+    // 可以让你更容易地使用旋转和相对坐标来进行绘制，而无需每次都加上 `size.width / 2` 和 `size.height / 2` 的偏移量。
+    //
+    // 例如，在你的 `drawText` 方法中，通过 `textPainter.paint(canvas, Offset(-width / 2, -height / 2))`
+    // 就可以轻松地将文本居中绘制在画布中心。同样，`drawScale` 方法中的旋转 `canvas.rotate(...)` 也是围绕新的中心原点进行的。
     canvas.translate(size.width / 2, size.height / 2);
     drawScale(canvas, size);
-    final double scaleLineWidth = size.width * _kScaleWidthRate;
-    final double indicatorRadius = size.width * _kIndicatorRadiusRate;
-
-    canvas.save();
-    int second = duration.inSeconds % 60;
-    int milliseconds = duration.inMilliseconds % 1000;
-    double radians = (second * 1000 + milliseconds) / (60 * 1000) * 2 * pi;
-    canvas.rotate(radians);
-    canvas.drawCircle(
-        Offset(
-          0,
-          -size.width / 2 + scaleLineWidth + indicatorRadius,
-        ),
-        indicatorRadius / 2,
-        indicatorPainter);
-    canvas.restore();
-
-    drawText(canvas);
+    // final double scaleLineWidth = size.width * _kScaleWidthRate;
+    // final double indicatorRadius = size.width * _kIndicatorRadiusRate;
+    //
+    // canvas.save();
+    // int second = duration.inSeconds % 60;
+    // int milliseconds = duration.inMilliseconds % 1000;
+    // double radians = (second * 1000 + milliseconds) / (60 * 1000) * 2 * pi;
+    // canvas.rotate(radians);
+    // canvas.drawCircle(
+    //     Offset(
+    //       0,
+    //       -size.width / 2 + scaleLineWidth + indicatorRadius,
+    //     ),
+    //     indicatorRadius / 2,
+    //     indicatorPainter);
+    // canvas.restore();
+    //
+    // drawText(canvas);
   }
 
   void drawText(Canvas canvas) {
@@ -113,7 +127,7 @@ class StopwatchPainter extends CustomPainter {
 
   void drawScale(Canvas canvas, Size size) {
     final double scaleLineWidth = size.width * _kScaleWidthRate;
-    for (int i = 0; i < 180; i++) {
+    for (int i = 0; i < 1; i++) {
       if (i == 90 + 45) {
         scalePainter.color = themeColor;
       } else {
@@ -121,6 +135,7 @@ class StopwatchPainter extends CustomPainter {
       }
       canvas.drawLine(Offset(size.width / 2, 0),
           Offset(size.width / 2 - scaleLineWidth, 0), scalePainter);
+      // 180根线的话，每次旋转就是这个角度
       canvas.rotate(pi / 180 * 2);
     }
   }

@@ -1,4 +1,6 @@
 void main() {
+  foo1();
+  foo2();
   foo3();
 }
 
@@ -14,6 +16,7 @@ void foo1(){
 }
 
 void foo2(){
+  print(' --- foo2 --- ');
   double a = 10.2;
   int b = 3;
   print(a + b); // 13.2
@@ -25,6 +28,7 @@ void foo2(){
 }
 
 void foo3(){
+  print(' --- foo3 --- ');
   double a = 10.2;
   double b = 3.1;
   print(a + b); // 13.2
