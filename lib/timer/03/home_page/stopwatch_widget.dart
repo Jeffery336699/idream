@@ -15,7 +15,7 @@ class StopwatchWidget extends StatelessWidget {
       {Key? key,
         required this.radius,
         required this.duration,
-        this.secondDuration = Duration.zero,
+        this.secondDuration = const Duration(minutes: 3, seconds: 28, milliseconds: 50),
         this.scaleColor = const Color(0xffDADADA),
         this.textStyle,
         this.themeColor})
@@ -88,7 +88,10 @@ class StopwatchPainter extends CustomPainter {
     canvas.save();
     int second = duration.inSeconds % 60;
     int milliseconds = duration.inMilliseconds % 1000;
+    //0:03:28.050000 -> 28, 50 / duration.inSeconds:208 , duration.inMilliseconds:208050
+    print('$duration -> $second, $milliseconds / duration.inSeconds:${duration.inSeconds} , duration.inMilliseconds:${duration.inMilliseconds}');
     double radians = (second * 1000 + milliseconds) / (60 * 1000) * 2 * pi;
+    ///此时的0°在正上方，完全符合预期
     canvas.rotate(radians);
     canvas.drawCircle(
         Offset(
@@ -97,6 +100,7 @@ class StopwatchPainter extends CustomPainter {
         ),
         indicatorRadius / 2,
         indicatorPainter);
+    //与save配对使用，恢复到之前的状态(中间进行了旋转操作，会影响后续的绘制)
     canvas.restore();
 
     drawText(canvas);
@@ -109,6 +113,8 @@ class StopwatchPainter extends CustomPainter {
     int minus = duration.inMinutes % 60;
     int second = duration.inSeconds % 60;
     int milliseconds = duration.inMilliseconds % 1000;
+    // 3, 28, 50
+    print('$duration -> $minus, $second, $milliseconds');
     String commonStr = '${minus.toString().padLeft(2, "0")}:${second.toString().padLeft(2, "0")}';
     String highlightStr = ".${(milliseconds ~/ 10).toString().padLeft(2, "0")}";
     textPainter.text = TextSpan(text: commonStr, style: textStyle, children: [
@@ -121,7 +127,7 @@ class StopwatchPainter extends CustomPainter {
   }
 
   void drawSecondText(Canvas canvas) {
-    int minus = secondDuration.inMinutes % 60;
+    int minus = secondDuration.inMinutes % 60; //
     int second = secondDuration.inSeconds % 60;
     int milliseconds = secondDuration.inMilliseconds % 1000;
     String commonStr = '${minus.toString().padLeft(2, "0")}:${second.toString().padLeft(2, "0")}';

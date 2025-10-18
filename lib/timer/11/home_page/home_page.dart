@@ -21,8 +21,9 @@ class _HomePageState extends State<HomePage> {
 
   // Duration _duration = Duration.zero;
   Duration _secondDuration = Duration.zero;
-  List<TimeRecord> _record = [];
-  ValueNotifier<Duration> _duration = ValueNotifier(Duration.zero);
+  final List<TimeRecord> _record = [];
+  ///配合ValueListenableBuilder来使用局部刷新优化UI渲染
+  final ValueNotifier<Duration> _duration = ValueNotifier(Duration.zero);
 
   @override
   void initState() {

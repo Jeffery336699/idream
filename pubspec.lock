@@ -69,10 +69,10 @@ packages:
     dependency: "direct main"
     description:
       name: flex_color_picker
-      sha256: "6cbe0733376cdac58c0a5d07d01e3c9a8c6da987acb3d5aa3daa290005fe7a93"
+      sha256: "5c846437069fb7afdd7ade6bf37e628a71d2ab0787095ddcb1253bf9345d5f3a"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.6.0"
+    version: "3.4.1"
   flex_seed_scheme:
     dependency: transitive
     description:
@@ -247,4 +247,4 @@ packages:
     version: "0.3.0"
 sdks:
   dart: ">=3.2.3 <4.0.0"
-  flutter: ">=3.10.0"
+  flutter: ">=3.16.0"

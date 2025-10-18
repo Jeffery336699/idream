@@ -68,7 +68,7 @@ class SettingPage extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all()
           ),
-          child: Text(local,style: TextStyle(height: 1),)),
+          child: Text(local,style: TextStyle(height: 1))),
     );
   }
 
