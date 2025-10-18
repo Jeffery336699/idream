@@ -7,6 +7,15 @@ void main() {
   runApp(const MyApp());
 }
 
+void printNumber(){
+  int num = 0;
+  for(int i = 0; i < 10; i++){
+    num++;
+  }
+  print(num);
+}
+
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
