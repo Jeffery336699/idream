@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(const MyApp());
+  futureA();
 }
 
 class MyApp extends StatelessWidget {
@@ -63,4 +66,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+Future futureA(){
+  return Future.delayed(Duration(seconds: 5),() => print('finish..'),).timeout(Duration(seconds: 3), onTimeout: (){
+    print('超时了');
+  });
 }
