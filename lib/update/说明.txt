@@ -4,5 +4,7 @@
     2.1 链接https://juejin.cn/post/6844904149058846734
 3. off_screen_render离屏渲染，借助layer的跨帧渲染实现以及无改变复用逻辑
 4. scheduler_demo演示调度器的使用，低优先级的任务在调度器空闲时执行
+5. dio_cache_demo演示304缓存策略，目前主流的一般是服务端来管理资源的修改与否
+    5.1 也就是ETag与Last-Modified
 
 
