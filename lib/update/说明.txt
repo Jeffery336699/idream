@@ -6,5 +6,7 @@
 4. scheduler_demo演示调度器的使用，低优先级的任务在调度器空闲时执行
 5. dio_cache_demo演示304缓存策略，目前主流的一般是服务端来管理资源的修改与否
     5.1 也就是ETag与Last-Modified
+6. constraint_demo演示约束布局
+    6.1 链接https://juejin.cn/post/6846687593745088526#heading-33
 
 
